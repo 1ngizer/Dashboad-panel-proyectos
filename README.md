@@ -4,52 +4,145 @@ Este repositorio sirve como la **fuente de la verdad** (Single Source of Truth) 
 
 ## Índice de Proyectos
 1. [iNGIZER](#1-ingizer)
-2. [igeogo](#2-igeogo)
-3. [bizzopp](#3-bizzopp)
-4. [cubecanvas](#4-cubecanvas)
-5. [imjago](#5-imjago)
+2. [PosBank](#2-posbank)
+3. [igeogo](#3-igeogo)
+4. [bizzopp](#4-bizzopp)
+5. [cubecanvas](#5-cubecanvas)
+6. [imjago](#6-imjago)
 
 ---
 
 ## 1. iNGIZER
-*(Esperando documentación inicial...)*
 
 ### Estado General
-* **Fase actual:** [Ej: Ideación / Desarrollo MVP / Beta / Producción]
-* **Objetivo principal:** [Descripción breve del objetivo actual]
+El proyecto se encuentra en fase de *handoff* (transición). Recientemente se cerraron 8 tareas pendientes. La arquitectura principal es funcional, pero existen bloqueos activos que requieren intervención manual (pruebas de descarga de PDF y facturación de la API de IA). Faltan algunas decisiones para completar el flujo de diagnóstico.
 
 ### Desarrollo y Tecnología (DevOps / Tech)
-* **Stack Tecnológico:** [Backend, Frontend, Base de datos, Hosting]
-* **Módulos Completados:** 
-  * 
-* **Tareas en Progreso (Backlog actual):**
-  * 
-* **Bloqueos / Problemas actuales:**
-  * 
+* **Landing Page:** Netlify (`public/ingizer/`), dominio en Squarespace.
+* **Frontend & Database:** Bubble (maneja Google OAuth, UI del chat, panel de control y base de datos).
+* **Orquestación / Backend:** Make.com (Escenario: `Message_incoming`).
+* **Motor de IA:** Anthropic Claude Sonnet 5 (vía Make AI Agents, usando `Ingizer Agent (copy_1784370957200)`).
+* **Integraciones:** Calendly, Google Workspace.
+
+### Módulos Completados
+* Envío de datos de registro (sector, empleados, descripción) al prompt de la IA.
+* Corrección de markdown roto en el chat UI.
+* Verificación de negocio en Meta resuelta y método de pago añadido.
+* Email de notificación a clientes creado.
+* Años B1/B2 confirmados (2026/2027/2028).
+* Orden cronológico de los badges del dashboard corregido.
+* CTA de descarga de PDF desbloqueado y visible.
+* Botón de WhatsApp reubicado y visible.
+
+### Tareas en Progreso (Backlog actual)
+* **Decisiones:** Elegir entre dos CTAs de WhatsApp en el popup del cliente (ícono pequeño vs. botón grande "Contact us").
+* **Verificación/Ejecución:**
+    * Verificar formato HTML del correo del cliente.
+    * Probar en producción las Ramas A (startup) y C (crecimiento rápido) del cuestionario.
+    * Crear enlace condicional hacia el producto "PosBank" dentro del diagnóstico.
+    * Limpiar y eliminar 3 agentes huérfanos en Make.com (requiere confirmación del usuario).
+
+### Bloqueos / Problemas actuales
+* **Descarga de PDF:** El usuario de prueba subió un documento personal en vez del diagnóstico. Se debe reemplazar manualmente el archivo en el OS para confirmar la descarga.
+* **Facturación API:** El saldo del Tier 1 de Anthropic expiró el 12 de agosto y está pendiente de recarga.
 
 ### Estrategia Comercial y Marketing
-* **Público Objetivo (Target):**
-* **Métricas / KPIs Actuales:**
-* **Hitos de Marketing:**
+* **Público Objetivo (Target):** Pymes en Colombia.
+* **Propuesta de Valor:** Asistente financiero automatizado con IA que provee un diagnóstico financiero inicial.
+* **Objetivo Comercial:** Usar el diagnóstico automatizado como imán de leads para vender el servicio de **Dirección Financiera como Servicio (CFO-as-a-service)**.
+* **Flujo del Usuario:** Landing page → Login (Bubble) → Chat con IA → Análisis financiero → Popup de diagnóstico de 5 pestañas → Agendar reunión en Calendly o descargar PDF.
+* **Cross-selling:** Posicionar "PosBank" como una solución recomendada dentro del diagnóstico.
 
 ---
 
-## 2. igeogo
+## 2. PosBank
+
+### Estado General
+La aplicación principal es altamente estable. El backend, aplicación móvil, landing page, motor de caja, inventario, POS y escaneo de facturas con IA están completamente desarrollados y sin problemas técnicos pendientes. La skill de Alexa está en Beta Testing. El principal reto es la integración con WhatsApp, bloqueada temporalmente por la verificación de Meta.
+
+### Desarrollo y Tecnología (DevOps / Tech)
+* **Backend:** Node.js / Express / TypeScript.
+* **Base de Datos:** Supabase (PostgreSQL con RLS multi-tenant).
+* **Frontend:** React 19 + Vite, PWA instalable.
+* **Despliegue (Hosting):** Railway (Plan Hobby).
+* **Integraciones/APIs:** API de Anthropic (escaneo de facturas), Meta Cloud API, Twilio, Alexa Skills Kit.
+
+### Módulos Completados
+* **Sistemas Core:** Backend, App, Landing page, Motor de caja, Inventario, POS y escaneo de facturas.
+* **Alexa Skill:** Lista para Beta Test. Se resolvieron problemas de timeout paralelizando consultas, con 32/32 tests pasando exitosamente.
+* **Backend WhatsApp:** Enrutamiento, servicios y parsers completamente construidos y desplegados.
+
+### Tareas en Progreso (Backlog actual)
+* **Verificación WhatsApp (Prioridad Alta):**
+    * Corregir dirección en Meta Business Info para que coincida con el RUT ("Cra 80 Bis No. 7A - 15, Bogotá D.C., Colombia").
+    * Reintentar verificación con RUT y el correo `admin@ingizer.com` (Plan B: crear WABA bajo el portafolio de Ingizer SAS).
+* **Alexa (Prioridad Media):**
+    * Probar el nombre de invocación ("pos bank") en un dispositivo Echo físico.
+    * Invitar testers reales mediante la app móvil de Alexa.
+* **Decisiones de Producto:** Definir si se construye facturación POS por voz (pausado por ahora).
+
+### Bloqueos / Problemas actuales
+* **Verificación Meta:** La integración de WhatsApp está bloqueada por una restricción activa (sospecha de automatización) y problemas de formato de dirección/teléfono en el RUT.
+
+### Estrategia Comercial y Marketing
+* **Público Objetivo (Target):** Pymes colombianas.
+* **Propuesta de Valor:** "Radar de caja inteligente" que los dueños pueden consultar vía App, Alexa o WhatsApp para conocer su flujo de caja, cuentas por pagar, inventario y ventas diarias al instante.
+* **Características Clave:** POS, Escaneo de facturas con IA y Panel centralizado de monitoreo.
+* **Métricas (KPIs) de Costos:** Hosting muy económico (≈$2/mes en Railway) y escaneo con Anthropic a ≈$0.014 por lectura.
+
+---
+
+## 3. igeogo
+
+### Estado General
+Plataforma verificada en línea y sin errores funcionales en su core (landings, app, panel, bot, base de datos). El producto está construido y en fase de transición hacia producción real. Las funcionalidades principales están listas, pero el despliegue al público está pausado por verificaciones externas (Meta y soporte de pagos).
+
+### Desarrollo y Tecnología (DevOps / Tech)
+* **Backend:** Node.js + Express (servido en Railway 24/7).
+* **Base de Datos:** MongoDB Atlas + Mongoose (índices `2dsphere` para geocoding).
+* **Frontend:** HTML/CSS/JS plano (sin framework), App PWA y Panel Admin.
+* **Dominio / Hosting:** `igeogo.ingizer.com` (DNS en Squarespace) / Railway.
+* **Integraciones:** Meta Cloud API (WhatsApp bot), Mapbox + Nominatim (geolocalización), Claude API (para redactar campañas), Wompi (pagos).
+
+### Módulos Completados
+* **Bot de WhatsApp:** Flujo completo (opt-in, categorías, ubicación, tarjetas de cupón, botón "INTERESADO").
+* **App PWA:** Login por WhatsApp OTP, roles de usuario/comercio, mapa de ofertas, creación de campañas con IA y pagos.
+* **Panel Admin:** Gestión de comercios, usuarios, cupones, campañas (despacho masivo probado end-to-end) y simulador de match.
+* **Pagos & Seguridad:** Webhooks de Wompi validados por checksum, rotación de secretos completada.
+* **SEO:** Sitemap, JSON-LD, imagen social (og.jpg).
+
+### Tareas en Progreso (Backlog actual)
+* **Operativas:** 
+    * Conseguir SIM/número dedicado para el bot de WhatsApp.
+    * Limpiar 8 comercios de prueba y 6 campañas demo del panel.
+    * Cargar comercios y cupones reales.
+* **Camino a Producción Completa:**
+    * Conectar el número real en WhatsApp Manager.
+    * Agregar método de pago en WhatsApp y publicar app de Meta en modo Live.
+    * Verificar perfil de Google Business.
+* **Decisiones Futuras:** Evaluar dominio propio (`igeogo.co`), añadir analítica al panel y validar canjes con código único.
+
+### Bloqueos / Problemas actuales
+* **Soporte Wompi:** Restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea los planes básicos. 
+* **Meta / WhatsApp:** Verificación de negocio (Ingizer) pendiente en Meta Business Suite. Aprobación de plantilla "oferta_cercana" pendiente.
+
+### Estrategia Comercial y Marketing
+* **Propuesta de Valor:** Plataforma de marketing de proximidad. Comercios crean campañas con descuentos y igeogo las entrega por WhatsApp a usuarios cercanos según intereses.
+* **Privacidad:** El negocio sabe a cuántas personas llega, pero no quiénes son. El usuario solo comparte su ubicación de forma segura para hacer "match".
+
+---
+
+## 4. bizzopp
 *(Pendiente de actualizar)*
 
 ---
 
-## 3. bizzopp
+## 5. cubecanvas
 *(Pendiente de actualizar)*
 
 ---
 
-## 4. cubecanvas
-*(Pendiente de actualizar)*
-
----
-
-## 5. imjago
+## 6. imjago
 *(Pendiente de actualizar)*
 
 ---
