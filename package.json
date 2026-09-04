@@ -1,0 +1,25 @@
+{
+  "name": "panel-proyectos-ia",
+  "version": "1.0.0",
+  "description": "Este repositorio sirve como la **fuente de la verdad** (Single Source of Truth) para el estado, desarrollo y estrategia comercial de todos los proyectos activos. Cualquier Inteligencia Artificial (Claude, Antigravity, ChatGPT, etc.) debe leer este documento para obtener el contexto actualizado antes de asistir en el desarrollo o marketing de los proyectos.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1ngizer/Dashboad-panel-proyectos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/1ngizer/Dashboad-panel-proyectos/issues"
+  },
+  "homepage": "https://github.com/1ngizer/Dashboad-panel-proyectos#readme",
+  "dependencies": {
+    "@notionhq/client": "^5.26.0",
+    "dotenv": "^17.4.2"
+  }
+}
