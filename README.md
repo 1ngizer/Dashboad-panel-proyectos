@@ -110,12 +110,12 @@ Plataforma verificada en línea y sin errores funcionales en su core (landings, 
 * **Panel Admin:** Gestión de comercios, usuarios, cupones, campañas (despacho masivo probado end-to-end) y simulador de match.
 * **Pagos & Seguridad:** Webhooks de Wompi validados por checksum, rotación de secretos completada.
 * **SEO:** Sitemap, JSON-LD, imagen social (og.jpg).
+* **Limpieza de datos de prueba (2026-09-07):** Se agregó el endpoint `DELETE /admin/campaigns/:id` (faltaba) y se eliminaron los 8 comercios de siembra y las 6 campañas demo. El panel queda en cero, listo para datos reales.
 
 ### Tareas en Progreso (Backlog actual)
-* **Operativas:** 
+* **Operativas:**
     * Conseguir SIM/número dedicado para el bot de WhatsApp.
-    * Limpiar 8 comercios de prueba y 6 campañas demo del panel.
-    * Cargar comercios y cupones reales.
+    * Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).
 * **Camino a Producción Completa:**
     * Conectar el número real en WhatsApp Manager.
     * Agregar método de pago en WhatsApp y publicar app de Meta en modo Live.
@@ -123,8 +123,8 @@ Plataforma verificada en línea y sin errores funcionales en su core (landings, 
 * **Decisiones Futuras:** Evaluar dominio propio (`igeogo.co`), añadir analítica al panel y validar canjes con código único.
 
 ### Bloqueos / Problemas actuales
-* **Soporte Wompi:** Restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea los planes básicos. 
-* **Meta / WhatsApp:** Verificación de negocio (Ingizer) pendiente en Meta Business Suite. Aprobación de plantilla "oferta_cercana" pendiente.
+* **Soporte Wompi:** Restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea los planes básicos. Sigue sin respuesta.
+* **Meta / WhatsApp:** Verificación de negocio (Ingizer) pendiente en Meta Business Suite. Aprobación de plantilla "oferta_cercana" pendiente. Estado sin confirmar por el usuario — revisar directamente en Meta Business Suite.
 
 ### Estrategia Comercial y Marketing
 * **Propuesta de Valor:** Plataforma de marketing de proximidad. Comercios crean campañas con descuentos y igeogo las entrega por WhatsApp a usuarios cercanos según intereses.
