@@ -111,20 +111,22 @@ Plataforma verificada en línea y sin errores funcionales en su core (landings, 
 * **Pagos & Seguridad:** Webhooks de Wompi validados por checksum, rotación de secretos completada.
 * **SEO:** Sitemap, JSON-LD, imagen social (og.jpg).
 * **Limpieza de datos de prueba (2026-09-07):** Se agregó el endpoint `DELETE /admin/campaigns/:id` (faltaba) y se eliminaron los 8 comercios de siembra y las 6 campañas demo. El panel queda en cero, listo para datos reales.
+* **Número dedicado conseguido (2026-09-07):** Nueva línea +573002391085, nunca tuvo WhatsApp, lista para registrar en producción.
+* **Causa raíz del bloqueo de Meta identificada (2026-09-07):** El bot vive bajo la cuenta de Meta Business **"1ngizer"**, que es una cuenta **separada** de "Ingizer SAS" (verificada desde el 19 ago). Verificar una no verifica la otra. Se envió la verificación de negocio de "1ngizer" con los mismos datos legales → **En revisión** (Meta estima ~2 días hábiles).
 
 ### Tareas en Progreso (Backlog actual)
-* **Operativas:**
-    * Conseguir SIM/número dedicado para el bot de WhatsApp.
-    * Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).
-* **Camino a Producción Completa:**
-    * Conectar el número real en WhatsApp Manager.
+* **Camino a Producción Completa (en curso):**
+    * Esperar aprobación de verificación de negocio de "1ngizer" (en revisión desde 2026-09-07).
+    * Una vez aprobada: agregar el número +573002391085 en WhatsApp Manager → Phone numbers, verificar por SMS/llamada, y actualizar `WHATSAPP_PHONE_NUMBER_ID` en Railway.
     * Agregar método de pago en WhatsApp y publicar app de Meta en modo Live.
     * Verificar perfil de Google Business.
+* **Operativas:**
+    * Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).
 * **Decisiones Futuras:** Evaluar dominio propio (`igeogo.co`), añadir analítica al panel y validar canjes con código único.
 
 ### Bloqueos / Problemas actuales
 * **Soporte Wompi:** Restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea los planes básicos. Sigue sin respuesta.
-* **Meta / WhatsApp:** Verificación de negocio (Ingizer) pendiente en Meta Business Suite. Aprobación de plantilla "oferta_cercana" pendiente. Estado sin confirmar por el usuario — revisar directamente en Meta Business Suite.
+* **Meta / WhatsApp:** Verificación de negocio de "1ngizer" **en revisión** (enviada 2026-09-07, ~2 días hábiles). Aprobación de plantilla "oferta_cercana" pendiente de confirmar.
 
 ### Estrategia Comercial y Marketing
 * **Propuesta de Valor:** Plataforma de marketing de proximidad. Comercios crean campañas con descuentos y igeogo las entrega por WhatsApp a usuarios cercanos según intereses.
