@@ -114,20 +114,20 @@ Plataforma verificada en línea y sin errores funcionales en su core (landings, 
 * **Número dedicado conseguido (2026-09-07):** Nueva línea +573002391085, nunca tuvo WhatsApp, lista para registrar en producción.
 * **Causa raíz del bloqueo de Meta identificada (2026-09-07):** El bot vive bajo la cuenta de Meta Business **"1ngizer"**, que es una cuenta **separada** de "Ingizer SAS" (verificada desde el 19 ago). Verificar una no verifica la otra. Se envió la verificación de negocio de "1ngizer" con los mismos datos legales → **En revisión** (Meta estima ~2 días hábiles).
 * **Verificación de negocio "1ngizer" APROBADA (confirmado 2026-09-08):** Meta reusó los datos ya verificados de "Ingizer SAS" — estado "Verified". El WABA de 1ngizer también ya tiene **método de pago agregado** (Mastercard, sin necesidad de acción adicional) y **Account status: Approved**.
+* **Número de producción +57 300 2391085 registrado (2026-09-08):** Perfil de WhatsApp Business creado (nombre "igeogo", zona Bogotá, categoría "Professional Services"), verificado por SMS y registrado con PIN. Phone Number ID: `1456047177580855`. `WHATSAPP_PHONE_NUMBER_ID` actualizado en Railway y servicio redesplegado (Online). Ruta correcta: developers.facebook.com → app "igeogo" → Use cases → Connect on WhatsApp → Customize → Step 2 → Register your WhatsApp phone number (WhatsApp Manager directo tenía el botón "Add phone number" deshabilitado por la app estar en modo Development).
 
 ### Tareas en Progreso (Backlog actual)
 * **Camino a Producción Completa (en curso):**
-    * Agregar el número +573002391085 en WhatsApp Manager → Phone numbers → Add phone number, verificar por SMS/llamada, y actualizar `WHATSAPP_PHONE_NUMBER_ID` en Railway (verificación y método de pago ya no bloquean este paso).
+    * Probar el bot end-to-end en el número real +573002391085 (opt-in, categorías, ubicación, cupones).
     * Confirmar estado de la plantilla "oferta_cercana" en WhatsApp Manager → Message Templates.
-    * Publicar app de Meta en modo Live.
-    * Investigar el aviso "WhatsApp needs more information" que sigue apareciendo junto al badge Verified en Business info (no se pudo abrir el detalle por UI el 2026-09-08).
+    * Publicar app de Meta en modo Live (sigue Unpublished).
     * Verificar perfil de Google Business.
 * **Operativas:**
     * Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).
 * **Decisiones Futuras:** Evaluar dominio propio (`igeogo.co`), añadir analítica al panel y validar canjes con código único.
 
 ### Bloqueos / Problemas actuales
-* **Soporte Wompi:** Restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea los planes básicos. Sigue sin respuesta. Es el único bloqueo activo — Meta ya no bloquea.
+* **Soporte Wompi:** Restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea los planes básicos. Sigue sin respuesta. Es el único bloqueo de negocio activo — Meta ya no bloquea.
 
 ### Estrategia Comercial y Marketing
 * **Propuesta de Valor:** Plataforma de marketing de proximidad. Comercios crean campañas con descuentos y igeogo las entrega por WhatsApp a usuarios cercanos según intereses.
