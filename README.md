@@ -95,7 +95,7 @@ La aplicación principal es altamente estable. El backend, aplicación móvil, l
 ## 3. igeogo
 
 ### Estado General
-Plataforma verificada en línea y sin errores funcionales en su core (landings, app, panel, bot, base de datos). El producto está construido y en fase de transición hacia producción real. Las funcionalidades principales están listas, pero el despliegue al público está pausado por verificaciones externas (Meta y soporte de pagos).
+Plataforma verificada en línea y sin errores funcionales en su core (landings, app, panel, bot, base de datos). El producto está construido y en fase de transición hacia producción real. La verificación de negocio de Meta ("1ngizer") ya se aprobó (2026-09-08); el despliegue al público ahora está pausado solo por el mínimo de transacción de Wompi y por registrar el número dedicado en WhatsApp Manager.
 
 ### Desarrollo y Tecnología (DevOps / Tech)
 * **Backend:** Node.js + Express (servido en Railway 24/7).
@@ -113,20 +113,21 @@ Plataforma verificada en línea y sin errores funcionales en su core (landings, 
 * **Limpieza de datos de prueba (2026-09-07):** Se agregó el endpoint `DELETE /admin/campaigns/:id` (faltaba) y se eliminaron los 8 comercios de siembra y las 6 campañas demo. El panel queda en cero, listo para datos reales.
 * **Número dedicado conseguido (2026-09-07):** Nueva línea +573002391085, nunca tuvo WhatsApp, lista para registrar en producción.
 * **Causa raíz del bloqueo de Meta identificada (2026-09-07):** El bot vive bajo la cuenta de Meta Business **"1ngizer"**, que es una cuenta **separada** de "Ingizer SAS" (verificada desde el 19 ago). Verificar una no verifica la otra. Se envió la verificación de negocio de "1ngizer" con los mismos datos legales → **En revisión** (Meta estima ~2 días hábiles).
+* **Verificación de negocio "1ngizer" APROBADA (confirmado 2026-09-08):** Meta reusó los datos ya verificados de "Ingizer SAS" — estado "Verified". El WABA de 1ngizer también ya tiene **método de pago agregado** (Mastercard, sin necesidad de acción adicional) y **Account status: Approved**.
 
 ### Tareas en Progreso (Backlog actual)
 * **Camino a Producción Completa (en curso):**
-    * Esperar aprobación de verificación de negocio de "1ngizer" (en revisión desde 2026-09-07).
-    * Una vez aprobada: agregar el número +573002391085 en WhatsApp Manager → Phone numbers, verificar por SMS/llamada, y actualizar `WHATSAPP_PHONE_NUMBER_ID` en Railway.
-    * Agregar método de pago en WhatsApp y publicar app de Meta en modo Live.
+    * Agregar el número +573002391085 en WhatsApp Manager → Phone numbers → Add phone number, verificar por SMS/llamada, y actualizar `WHATSAPP_PHONE_NUMBER_ID` en Railway (verificación y método de pago ya no bloquean este paso).
+    * Confirmar estado de la plantilla "oferta_cercana" en WhatsApp Manager → Message Templates.
+    * Publicar app de Meta en modo Live.
+    * Investigar el aviso "WhatsApp needs more information" que sigue apareciendo junto al badge Verified en Business info (no se pudo abrir el detalle por UI el 2026-09-08).
     * Verificar perfil de Google Business.
 * **Operativas:**
     * Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).
 * **Decisiones Futuras:** Evaluar dominio propio (`igeogo.co`), añadir analítica al panel y validar canjes con código único.
 
 ### Bloqueos / Problemas actuales
-* **Soporte Wompi:** Restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea los planes básicos. Sigue sin respuesta.
-* **Meta / WhatsApp:** Verificación de negocio de "1ngizer" **en revisión** (enviada 2026-09-07, ~2 días hábiles). Aprobación de plantilla "oferta_cercana" pendiente de confirmar.
+* **Soporte Wompi:** Restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea los planes básicos. Sigue sin respuesta. Es el único bloqueo activo — Meta ya no bloquea.
 
 ### Estrategia Comercial y Marketing
 * **Propuesta de Valor:** Plataforma de marketing de proximidad. Comercios crean campañas con descuentos y igeogo las entrega por WhatsApp a usuarios cercanos según intereses.
