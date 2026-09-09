@@ -115,12 +115,12 @@ Plataforma verificada en línea y sin errores funcionales en su core (landings, 
 * **Causa raíz del bloqueo de Meta identificada (2026-09-07):** El bot vive bajo la cuenta de Meta Business **"1ngizer"**, que es una cuenta **separada** de "Ingizer SAS" (verificada desde el 19 ago). Verificar una no verifica la otra. Se envió la verificación de negocio de "1ngizer" con los mismos datos legales → **En revisión** (Meta estima ~2 días hábiles).
 * **Verificación de negocio "1ngizer" APROBADA (confirmado 2026-09-08):** Meta reusó los datos ya verificados de "Ingizer SAS" — estado "Verified". El WABA de 1ngizer también ya tiene **método de pago agregado** (Mastercard, sin necesidad de acción adicional) y **Account status: Approved**.
 * **Número de producción +57 300 2391085 registrado (2026-09-08):** Perfil de WhatsApp Business creado (nombre "igeogo", zona Bogotá, categoría "Professional Services"), verificado por SMS y registrado con PIN. Phone Number ID: `1456047177580855`. `WHATSAPP_PHONE_NUMBER_ID` actualizado en Railway y servicio redesplegado (Online). Ruta correcta: developers.facebook.com → app "igeogo" → Use cases → Connect on WhatsApp → Customize → Step 2 → Register your WhatsApp phone number (WhatsApp Manager directo tenía el botón "Add phone number" deshabilitado por la app estar en modo Development).
+* **App de Meta "igeogo" publicada en Live (2026-09-09):** Primer intento de mensaje real al bot no llegó a Railway — se diagnosticó que faltaba activar "Subscribe webhooks" en el WABA (ya corregido) y que Meta bloquea todo el tráfico de producción mientras la app esté Unpublished. Se crearon y desplegaron páginas reales de privacidad y términos (`igeogo.ingizer.com/privacidad/` y `/terminos/`, mismo estilo de marca), se completó Privacy Policy/Terms/Data deletion/Category en la app de Meta, y se publicó la app. Pendiente que el usuario confirme si el bot ya responde.
 
 ### Tareas en Progreso (Backlog actual)
 * **Camino a Producción Completa (en curso):**
-    * Probar el bot end-to-end en el número real +573002391085 (opt-in, categorías, ubicación, cupones).
+    * Confirmar que el bot responde end-to-end ahora que la app está Live (opt-in, categorías, ubicación, cupones).
     * Confirmar estado de la plantilla "oferta_cercana" en WhatsApp Manager → Message Templates.
-    * Publicar app de Meta en modo Live (sigue Unpublished).
     * Verificar perfil de Google Business.
 * **Operativas:**
     * Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).
