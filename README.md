@@ -119,12 +119,13 @@ Plataforma verificada en línea y sin errores funcionales en su core (landings, 
 * **Bot confirmado funcionando end-to-end en el número real (2026-09-09):** el usuario le escribió "Hola" al +57 300 2391085 y el bot respondió con el menú completo (Ubicación actual / Ubic. anterior / Mis intereses) y solicitó compartir ubicación correctamente. El camino a producción de WhatsApp queda completo.
 * **Google Analytics 4 + analítica de campañas (2026-09-09):** se creó cuenta de GA ("ingizer" → propiedad "igeogo", Measurement ID `G-9Q6DNKDM7S`) y se agregó el tag a las 5 páginas de landing. En el panel, `Campaign.interestedCount` ahora registra cada respuesta "INTERESADO" (antes se perdía) y la tab Campañas muestra conversión por campaña + resumen agregado.
 * **Google Business Profile ya verificado (confirmado 2026-09-09):** no hacía falta verificarlo — estaba "Verified" desde antes (105 vistas, "Looks good!"). Se actualizó el teléfono al número real del bot (300 2391085) y se conectó WhatsApp (`wa.me/573002391085`) como canal de chat primario, pendiente de revisión de Google (~10 min).
+* **Validación de canjes con código único (2026-09-09):** el código que se muestra en la tarjeta de WhatsApp ahora se persiste (modelo `Redemption` nuevo, antes se generaba y se descartaba). Los comercios validan el código en `igeogo.ingizer.com/canjear/` (página pública sin login, ya que `Merchant` no tiene autenticación propia) — un código solo se puede usar una vez. Panel admin: nueva pestaña "Canjes" con historial. De paso se corrigió un bug preexistente que impedía ver la pestaña "Leads".
 
 ### Tareas en Progreso (Backlog actual)
 * **Operativas:**
     * Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).
     * Confirmar estado de la plantilla "oferta_cercana" en WhatsApp Manager → Message Templates.
-* **Decisiones Futuras:** Evaluar dominio propio (`igeogo.co`) y validar canjes con código único.
+* **Decisiones Futuras:** Evaluar dominio propio (`igeogo.co`).
 
 ### Bloqueos / Problemas actuales
 * **Soporte Wompi:** Restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea los planes básicos. Sigue sin respuesta. Es el único bloqueo de negocio activo — Meta ya no bloquea.
