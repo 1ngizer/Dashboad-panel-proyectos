@@ -117,13 +117,14 @@ Plataforma verificada en línea y sin errores funcionales en su core (landings, 
 * **Número de producción +57 300 2391085 registrado (2026-09-08):** Perfil de WhatsApp Business creado (nombre "igeogo", zona Bogotá, categoría "Professional Services"), verificado por SMS y registrado con PIN. Phone Number ID: `1456047177580855`. `WHATSAPP_PHONE_NUMBER_ID` actualizado en Railway y servicio redesplegado (Online). Ruta correcta: developers.facebook.com → app "igeogo" → Use cases → Connect on WhatsApp → Customize → Step 2 → Register your WhatsApp phone number (WhatsApp Manager directo tenía el botón "Add phone number" deshabilitado por la app estar en modo Development).
 * **App de Meta "igeogo" publicada en Live (2026-09-09):** Primer intento de mensaje real al bot no llegó a Railway — se diagnosticó que faltaba activar "Subscribe webhooks" en el WABA (ya corregido) y que Meta bloquea todo el tráfico de producción mientras la app esté Unpublished. Se crearon y desplegaron páginas reales de privacidad y términos (`igeogo.ingizer.com/privacidad/` y `/terminos/`, mismo estilo de marca), se completó Privacy Policy/Terms/Data deletion/Category en la app de Meta, y se publicó la app.
 * **Bot confirmado funcionando end-to-end en el número real (2026-09-09):** el usuario le escribió "Hola" al +57 300 2391085 y el bot respondió con el menú completo (Ubicación actual / Ubic. anterior / Mis intereses) y solicitó compartir ubicación correctamente. El camino a producción de WhatsApp queda completo.
+* **Google Analytics 4 + analítica de campañas (2026-09-09):** se creó cuenta de GA ("ingizer" → propiedad "igeogo", Measurement ID `G-9Q6DNKDM7S`) y se agregó el tag a las 5 páginas de landing. En el panel, `Campaign.interestedCount` ahora registra cada respuesta "INTERESADO" (antes se perdía) y la tab Campañas muestra conversión por campaña + resumen agregado.
 
 ### Tareas en Progreso (Backlog actual)
 * **Operativas:**
     * Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).
     * Confirmar estado de la plantilla "oferta_cercana" en WhatsApp Manager → Message Templates.
     * Verificar perfil de Google Business.
-* **Decisiones Futuras:** Evaluar dominio propio (`igeogo.co`), añadir analítica al panel y validar canjes con código único.
+* **Decisiones Futuras:** Evaluar dominio propio (`igeogo.co`) y validar canjes con código único.
 
 ### Bloqueos / Problemas actuales
 * **Soporte Wompi:** Restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea los planes básicos. Sigue sin respuesta. Es el único bloqueo de negocio activo — Meta ya no bloquea.
