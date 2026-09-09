@@ -11,7 +11,7 @@ const data = {
         "Avance": 95
     },
     "igeogo": {
-        "Avance": 82
+        "Avance": 90
     }
 };
 
