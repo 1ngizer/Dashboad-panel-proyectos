@@ -95,7 +95,7 @@ La aplicación principal es altamente estable. El backend, aplicación móvil, l
 ## 3. igeogo
 
 ### Estado General
-Plataforma verificada en línea y sin errores funcionales en su core (landings, app, panel, bot, base de datos). El producto está construido y en fase de transición hacia producción real. La verificación de negocio de Meta ("1ngizer") ya se aprobó (2026-09-08); el despliegue al público ahora está pausado solo por el mínimo de transacción de Wompi y por registrar el número dedicado en WhatsApp Manager.
+Plataforma verificada en línea y sin errores funcionales en su core (landings, app, panel, bot, base de datos). El bot de WhatsApp ya funciona de punta a punta en el número real +57 300 2391085 (verificado 2026-09-09). El despliegue al público ahora está pausado solo por el mínimo de transacción de Wompi, que bloquea 3 de los 4 planes de precio.
 
 ### Desarrollo y Tecnología (DevOps / Tech)
 * **Backend:** Node.js + Express (servido en Railway 24/7).
@@ -115,15 +115,14 @@ Plataforma verificada en línea y sin errores funcionales en su core (landings, 
 * **Causa raíz del bloqueo de Meta identificada (2026-09-07):** El bot vive bajo la cuenta de Meta Business **"1ngizer"**, que es una cuenta **separada** de "Ingizer SAS" (verificada desde el 19 ago). Verificar una no verifica la otra. Se envió la verificación de negocio de "1ngizer" con los mismos datos legales → **En revisión** (Meta estima ~2 días hábiles).
 * **Verificación de negocio "1ngizer" APROBADA (confirmado 2026-09-08):** Meta reusó los datos ya verificados de "Ingizer SAS" — estado "Verified". El WABA de 1ngizer también ya tiene **método de pago agregado** (Mastercard, sin necesidad de acción adicional) y **Account status: Approved**.
 * **Número de producción +57 300 2391085 registrado (2026-09-08):** Perfil de WhatsApp Business creado (nombre "igeogo", zona Bogotá, categoría "Professional Services"), verificado por SMS y registrado con PIN. Phone Number ID: `1456047177580855`. `WHATSAPP_PHONE_NUMBER_ID` actualizado en Railway y servicio redesplegado (Online). Ruta correcta: developers.facebook.com → app "igeogo" → Use cases → Connect on WhatsApp → Customize → Step 2 → Register your WhatsApp phone number (WhatsApp Manager directo tenía el botón "Add phone number" deshabilitado por la app estar en modo Development).
-* **App de Meta "igeogo" publicada en Live (2026-09-09):** Primer intento de mensaje real al bot no llegó a Railway — se diagnosticó que faltaba activar "Subscribe webhooks" en el WABA (ya corregido) y que Meta bloquea todo el tráfico de producción mientras la app esté Unpublished. Se crearon y desplegaron páginas reales de privacidad y términos (`igeogo.ingizer.com/privacidad/` y `/terminos/`, mismo estilo de marca), se completó Privacy Policy/Terms/Data deletion/Category en la app de Meta, y se publicó la app. Pendiente que el usuario confirme si el bot ya responde.
+* **App de Meta "igeogo" publicada en Live (2026-09-09):** Primer intento de mensaje real al bot no llegó a Railway — se diagnosticó que faltaba activar "Subscribe webhooks" en el WABA (ya corregido) y que Meta bloquea todo el tráfico de producción mientras la app esté Unpublished. Se crearon y desplegaron páginas reales de privacidad y términos (`igeogo.ingizer.com/privacidad/` y `/terminos/`, mismo estilo de marca), se completó Privacy Policy/Terms/Data deletion/Category en la app de Meta, y se publicó la app.
+* **Bot confirmado funcionando end-to-end en el número real (2026-09-09):** el usuario le escribió "Hola" al +57 300 2391085 y el bot respondió con el menú completo (Ubicación actual / Ubic. anterior / Mis intereses) y solicitó compartir ubicación correctamente. El camino a producción de WhatsApp queda completo.
 
 ### Tareas en Progreso (Backlog actual)
-* **Camino a Producción Completa (en curso):**
-    * Confirmar que el bot responde end-to-end ahora que la app está Live (opt-in, categorías, ubicación, cupones).
-    * Confirmar estado de la plantilla "oferta_cercana" en WhatsApp Manager → Message Templates.
-    * Verificar perfil de Google Business.
 * **Operativas:**
     * Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).
+    * Confirmar estado de la plantilla "oferta_cercana" en WhatsApp Manager → Message Templates.
+    * Verificar perfil de Google Business.
 * **Decisiones Futuras:** Evaluar dominio propio (`igeogo.co`), añadir analítica al panel y validar canjes con código único.
 
 ### Bloqueos / Problemas actuales
