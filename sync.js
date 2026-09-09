@@ -5,7 +5,7 @@ const databaseId = process.env.NOTION_DATABASE_ID;
 
 const data = {
     "iNGIZER": {
-        "Avance": 80
+        "Avance": 99
     },
     "PosBank": {
         "Avance": 95

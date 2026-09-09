@@ -15,7 +15,7 @@ Este repositorio sirve como la **fuente de la verdad** (Single Source of Truth) 
 ## 1. iNGIZER
 
 ### Estado General
-El proyecto se encuentra en fase de *handoff* (transición). Recientemente se cerraron 8 tareas pendientes. La arquitectura principal es funcional, pero existen bloqueos activos que requieren intervención manual (pruebas de descarga de PDF y facturación de la API de IA). Faltan algunas decisiones para completar el flujo de diagnóstico.
+Sin bloqueos activos. Sesión del 2026-09-09 muy productiva: se resolvió un bug crítico que tenía caído el motor de diagnóstico completo desde el 16 de agosto, se corrieron por primera vez de punta a punta las Ramas A y C, se mitigaron 2 bugs de experiencia de usuario, y se construyó y validó de punta a punta el primer cross-sell automático hacia PosBank dentro del diagnóstico.
 
 ### Desarrollo y Tecnología (DevOps / Tech)
 * **Landing Page:** Netlify (`public/ingizer/`), dominio en Squarespace.
@@ -31,27 +31,31 @@ El proyecto se encuentra en fase de *handoff* (transición). Recientemente se ce
 * Email de notificación a clientes creado.
 * Años B1/B2 confirmados (2026/2027/2028).
 * Orden cronológico de los badges del dashboard corregido.
-* CTA de descarga de PDF desbloqueado y visible.
-* Botón de WhatsApp reubicado y visible.
+* CTA de descarga de PDF desbloqueado y visible (verificado end-to-end).
+* Duplicidad del CTA de WhatsApp resuelta: eliminado el botón grande "Ponte en contacto con nosotros"; queda el ícono chico como único CTA. Desplegado el 2026-09-08.
+* Recarga de USD 40 en Anthropic (Tier 2) — saldo restablecido.
+* **Bug crítico resuelto: conexión de Gmail expirada en Make.com** (`Message_incoming`), que dejaba todo el chat sin responder desde el 16 de agosto. Reautorizada con los scopes correctos el 2026-09-09.
+* **Ramas A (Emprendimiento) y C (Startup) corridas de punta a punta en producción por primera vez** — ambas generan diagnóstico completo (5 pestañas) coherente, con semáforos financieros variados.
+* **Bug de notificación faltante y de refresco del chat, mitigados y confirmados en producción:** workflow recurrente (`Do every 15 seconds`) en `ai_chat` que (a) muestra automáticamente el popup de diagnóstico listo sin recarga manual, y (b) recarga la página como red de seguridad cuando el chat queda colgado. Verificado funcionando en vivo el 2026-09-09.
+* **Link condicional a PosBank construido, desplegado y validado end-to-end:** en la pestaña "4. Situación Financiera" del popup de diagnóstico, aparece un CTA discreto ("💡 Recomendado para ti: conoce PosBank, tu radar de flujo de caja →") cuando el análisis contiene señales 🔴 o 🟡. Al hacer clic abre `https://posbank.ingizer.com/` en pestaña nueva — confirmado con captura real que carga la landing correcta de PosBank.
 
 ### Tareas en Progreso (Backlog actual)
-* **Decisiones:** Elegir entre dos CTAs de WhatsApp en el popup del cliente (ícono pequeño vs. botón grande "Contact us").
-* **Verificación/Ejecución:**
-    * Verificar formato HTML del correo del cliente.
-    * Probar en producción las Ramas A (startup) y C (crecimiento rápido) del cuestionario.
-    * Crear enlace condicional hacia el producto "PosBank" dentro del diagnóstico.
-    * Limpiar y eliminar 3 agentes huérfanos en Make.com (requiere confirmación del usuario).
+* Verificar formato HTML del correo del cliente en una bandeja real.
+* Limpiar y eliminar 3 agentes huérfanos en Make.com (requiere confirmación del usuario).
+* **[Seguimiento] Confirmar en Make → History que el próximo diagnóstico completo dispare el correo de Gmail sin warnings.**
+* **[Mejora] Página `/register` sin marca de ingizer** — plantilla genérica de Bubble en inglés, con campo de foto de perfil roto.
+* **[Seguimiento] Monitorear con usuarios reales el parche de refresco del chat** — es una mitigación, no una solución de raíz.
+* **[Mejora futura] Extender el link condicional a PosBank a otras pestañas del diagnóstico** (ej. "2. Análisis Canvas" o "5. Propuesta Ingizer") si se valida que el cross-sell genera conversiones.
 
 ### Bloqueos / Problemas actuales
-* **Descarga de PDF:** El usuario de prueba subió un documento personal en vez del diagnóstico. Se debe reemplazar manualmente el archivo en el OS para confirmar la descarga.
-* **Facturación API:** El saldo del Tier 1 de Anthropic expiró el 12 de agosto y está pendiente de recarga.
+Ninguno.
 
 ### Estrategia Comercial y Marketing
 * **Público Objetivo (Target):** Pymes en Colombia.
 * **Propuesta de Valor:** Asistente financiero automatizado con IA que provee un diagnóstico financiero inicial.
 * **Objetivo Comercial:** Usar el diagnóstico automatizado como imán de leads para vender el servicio de **Dirección Financiera como Servicio (CFO-as-a-service)**.
 * **Flujo del Usuario:** Landing page → Login (Bubble) → Chat con IA → Análisis financiero → Popup de diagnóstico de 5 pestañas → Agendar reunión en Calendly o descargar PDF.
-* **Cross-selling:** Posicionar "PosBank" como una solución recomendada dentro del diagnóstico.
+* **Cross-selling:** Link condicional a PosBank ya activo en la pestaña de Situación Financiera del diagnóstico (ver Módulos Completados).
 
 ---
 
