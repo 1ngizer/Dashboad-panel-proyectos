@@ -11,11 +11,13 @@ const data = {
         "Estado del proyecto": "En curso",
         "Prioridad": "Alta",
         "Mermaid": "graph LR\n  Cliente([Cliente]) --> Landing[ingizer.com]\n  Landing --> App[app.ingizer.com - Bubble DB]\n  App -->|Datos de usuario| Make[Make.com]\n  Make <-->|Preguntas y Diagnóstico| Claude[Claude Sonnet 5]\n  Make --> Equipo[Gmail equipo]\n  Make --> Correo[Correo al cliente]\n  App --> Calendly[Agendar sesión Calendly]",
+        "MermaidPreguntas": "graph TD\n  Start([Inicio en Chat]) --> M1[Módulo 1: Generales - 11 preguntas]\n  M1 --> Q1{Pregunta 1: Etapa}\n  Q1 -->|Arrancando| RA[Rama A: Emprendimiento]\n  Q1 -->|Andando| RB[Rama B: Negocio Tradicional]\n  Q1 -->|Creciendo| RC[Rama C: Startup / Rápido]\n  RA --> A[Análisis: Sostenibilidad, Precio, Orden]\n  RB --> B[Análisis: Liquidez, Ciclo Caja, Deuda]\n  RC --> C[Análisis: Burn rate, Inversión, Control]\n  A --> Fin([Generar Diagnóstico y Canvas])\n  B --> Fin\n  C --> Fin",
         "TechStack": [
             "Landing Page: Netlify (ingizer.com)",
             "Frontend & DB: Bubble (app.ingizer.com)",
             "Orquestación: Make.com",
-            "IA & Razonamiento: Anthropic (Claude Sonnet 5)"
+            "IA & Razonamiento: Anthropic (Claude Sonnet 5)",
+            "Documentación completa de Preguntas en GitHub: docs/iNGIZER/estructura-diagnostico.md"
         ],
         "Backlog": [
             "Verificar formato HTML del correo del cliente.",
@@ -134,6 +136,22 @@ async function syncDirectFetch() {
                     type: "code",
                     code: {
                         rich_text: [{ text: { content: data[title].Mermaid } }],
+                        language: "mermaid"
+                    }
+                });
+            }
+
+            if (data[title].MermaidPreguntas) {
+                children.push({
+                    object: "block",
+                    type: "heading_2",
+                    heading_2: { rich_text: [{ text: { content: "🧠 Flujo del Diagnóstico IA" } }] }
+                });
+                children.push({
+                    object: "block",
+                    type: "code",
+                    code: {
+                        rich_text: [{ text: { content: data[title].MermaidPreguntas } }],
                         language: "mermaid"
                     }
                 });
