@@ -10,12 +10,12 @@ const data = {
         "Próxima Tarea": "Recargar saldo de API de IA y reemplazar el archivo PDF.",
         "Estado del proyecto": "En curso",
         "Prioridad": "Alta",
+        "Mermaid": "graph LR\n  Cliente([Cliente]) --> Landing[ingizer.com]\n  Landing --> App[app.ingizer.com - Bubble DB]\n  App -->|Datos de usuario| Make[Make.com]\n  Make <-->|Preguntas y Diagnóstico| Claude[Claude Sonnet 5]\n  Make --> Equipo[Gmail equipo]\n  Make --> Correo[Correo al cliente]\n  App --> Calendly[Agendar sesión Calendly]",
         "TechStack": [
             "Landing Page: Netlify (ingizer.com)",
-            "Frontend & DB: Bubble (app.ingizer.com) con Autenticación de Google",
-            "Orquestación: Make.com (Message_incoming)",
-            "IA & Razonamiento: Anthropic (Claude Sonnet 5)",
-            "Documentación completa en GitHub: docs/iNGIZER/arquitectura.md"
+            "Frontend & DB: Bubble (app.ingizer.com)",
+            "Orquestación: Make.com",
+            "IA & Razonamiento: Anthropic (Claude Sonnet 5)"
         ],
         "Backlog": [
             "Verificar formato HTML del correo del cliente.",
@@ -30,12 +30,11 @@ const data = {
         "Próxima Tarea": "Corregir dirección en Meta Business Info (Cra 80 Bis No. 7A - 15).",
         "Estado del proyecto": "En curso",
         "Prioridad": "Media",
+        "Mermaid": "graph TD\n  A[App PWA] --> API[posbank-api - Railway]\n  B[Alexa Voz] --> API\n  C[WhatsApp Chat] --> API\n  Cam[Cámara Facturas] --> API\n  API <--> DB[(Supabase PostgreSQL)]\n  API --> Claude[Claude API OCR]",
         "TechStack": [
             "Frontend (App): React + Vite (PWA)",
             "Backend (API): Node.js / Express en Railway",
-            "Base de Datos: Supabase (PostgreSQL) con RLS y Auth",
-            "Terceros: Claude API (OCR), Alexa Skills Kit, WhatsApp Cloud API",
-            "Documentación completa en GitHub: docs/PosBank/arquitectura.md"
+            "Base de Datos: Supabase (PostgreSQL) con RLS y Auth"
         ],
         "Backlog": [
             "Corregir dirección en Meta Business Info para coincidir con RUT.",
@@ -50,12 +49,11 @@ const data = {
         "Próxima Tarea": "Conseguir SIM nueva dedicada para WhatsApp Manager.",
         "Estado del proyecto": "Bloqueado",
         "Prioridad": "Baja",
+        "Mermaid": "graph TD\n  U[Usuario - App/WhatsApp] --> API[Express Backend - Railway]\n  N[Negocio - Crea Promociones] --> API\n  API <--> DB[(MongoDB)]\n  API --> Mapas[Mapbox / Nominatim]\n  API --> IA[Claude IA]\n  API --> Pagos[Wompi]\n  API --> WP[WhatsApp API]",
         "TechStack": [
             "Backend 24/7: Node.js / Express en Railway",
             "Base de Datos: MongoDB",
-            "Canales: WhatsApp Bot, App PWA, Panel Admin",
-            "Integraciones: Mapbox, Nominatim, Claude IA, Wompi, Meta API",
-            "Documentación completa en GitHub: docs/igeogo/arquitectura.md"
+            "Integraciones: Mapbox, Nominatim, Claude IA, Wompi, Meta API"
         ],
         "Backlog": [
             "Conseguir SIM/número dedicado para el bot de WhatsApp.",
@@ -129,6 +127,17 @@ async function syncDirectFetch() {
                     heading_2: { rich_text: [{ text: { content: "🏗️ Arquitectura y Tech Stack" } }] }
                 }
             ];
+
+            if (data[title].Mermaid) {
+                children.push({
+                    object: "block",
+                    type: "code",
+                    code: {
+                        rich_text: [{ text: { content: data[title].Mermaid } }],
+                        language: "mermaid"
+                    }
+                });
+            }
 
             data[title].TechStack.forEach(item => {
                 children.push({
