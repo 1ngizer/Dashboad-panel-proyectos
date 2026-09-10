@@ -1,16 +1,26 @@
-require('dotenv').config();
+﻿require('dotenv').config();
 
 const token = process.env.NOTION_TOKEN;
 const databaseId = process.env.NOTION_DATABASE_ID;
 
 const data = {
-    "iNGIZER": {
-        "Avance": 99
+    "01. Ingizer": {
+        "Avance": 85,
+        "Bloqueos": "Ninguno",
+        "Próxima Tarea": "Implementar Bubble RLS y Rate Limiting",
+        "Estado": "En Progreso",
+        "Prioridad": "Alta",
+        "Backlog": [
+            "Implementar Bubble RLS (Row Level Security)",
+            "Configurar Rate Limiting",
+            "Ajustes UI/UX: Página de registro genérica",
+            "Ajustes UI/UX: Indicador de progreso"
+        ]
     },
-    "PosBank": {
+    "03. PosBank": {
         "Avance": 95
     },
-    "igeogo": {
+    "02. igeogo": {
         "Avance": 90
     }
 };
@@ -43,7 +53,7 @@ async function syncDirectFetch() {
         if (data[title]) {
             const updateProps = {};
             
-            // Si la columna "Avance" existe, le enviamos el número
+            // Si la columna "Avance" existe, le enviamos el nÃºmero
             if (page.properties["Avance"]) {
                 updateProps["Avance"] = { number: data[title]["Avance"] };
             }
@@ -59,12 +69,13 @@ async function syncDirectFetch() {
                 if (!updateRes.ok) {
                     console.error(`Error inyectando avance en ${title}:`, await updateRes.text());
                 } else {
-                    console.log(`✅ Barra de progreso actualizada para: ${title} (${data[title]["Avance"]}%)`);
+                    console.log(`âœ… Barra de progreso actualizada para: ${title} (${data[title]["Avance"]}%)`);
                 }
             }
         }
     }
-    console.log("¡Barras de avance inyectadas exitosamente!");
+    console.log("Â¡Barras de avance inyectadas exitosamente!");
 }
 
 syncDirectFetch();
+
