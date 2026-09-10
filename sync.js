@@ -13,10 +13,18 @@ const data = {
         "Estado del proyecto": "En curso"
     },
     "03. PosBank": {
-        "Avance": 95
+        "Avance": 95,
+        "Bloqueos": "Verificación Meta: la integración de WhatsApp está bloqueada por una restricción activa (sospecha de automatización) y problemas de formato de dirección/teléfono en el RUT.",
+        "Próxima Tarea": "Corregir dirección en Meta Business Info para que coincida con el RUT y reintentar la verificación de WhatsApp (Plan B: crear WABA bajo el portafolio de Ingizer SAS)",
+        "Prioridad": "Alta",
+        "Estado del proyecto": "En curso"
     },
     "02. igeogo": {
-        "Avance": 90
+        "Avance": 90,
+        "Bloqueos": "Soporte Wompi: restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea 3 de los 4 planes de precio. Sigue sin respuesta. Es el único bloqueo de negocio activo — Meta ya no bloquea.",
+        "Próxima Tarea": "Confirmar el estado de la plantilla 'oferta_cercana' en WhatsApp Manager y dar seguimiento a soporte de Wompi",
+        "Prioridad": "Alta",
+        "Estado del proyecto": "En curso"
     }
 };
 
