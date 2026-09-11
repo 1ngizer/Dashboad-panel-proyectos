@@ -135,17 +135,16 @@ Plataforma verificada en línea y sin errores funcionales en su core (landings, 
 * **Google Analytics 4 + analítica de campañas (2026-09-09):** cuenta de GA ("ingizer" → propiedad "igeogo", Measurement ID `G-9Q6DNKDM7S`) agregada a las 5 páginas de landing. `Campaign.interestedCount` ahora registra cada respuesta "INTERESADO" y la tab Campañas muestra conversión por campaña + resumen agregado.
 * **Google Business Profile ya verificado (confirmado 2026-09-09):** estaba "Verified" desde antes. Se actualizó el teléfono al número real del bot y se conectó WhatsApp como canal de chat primario.
 * **Validación de canjes con código único (2026-09-09):** el código de la tarjeta de WhatsApp ahora se persiste (modelo `Redemption`). Los comercios validan el código en `igeogo.ingizer.com/canjear/` — un código solo se puede usar una vez. Panel admin: nueva pestaña "Canjes" con historial.
-* **Auditoría técnica completa (2026-09-10):** revisión de salud y código real — sin errores en logs, todos los endpoints responden. Se confirmaron 2 hallazgos críticos con lectura directa del código (ver Backlog): webhook de Meta sin validar firma, y `discountPercent` roto en cupones de comercio.
+* **Auditoría técnica completa (2026-09-10):** revisión de salud y código real — sin errores en logs, todos los endpoints responden. Se confirmaron 2 hallazgos críticos con lectura directa del código: webhook de Meta sin validar firma, y `discountPercent` roto en cupones de comercio.
+* **Asistente de IA ampliado (2026-09-11):** antes solo redactaba texto de campañas. Se agregó moderación de contenido (bloquea campañas con contenido engañoso/ilegal antes de crearlas) y recomendaciones automáticas sobre resultados reales de campaña. La app del comercio ahora muestra sus resultados reales (enviados/interesados/% conversión) — antes solo existían en el panel admin.
+* **Hardening de seguridad desplegado (2026-09-11):** helmet + CORS explícito + rate limiting global en `/app/api` y `/admin`, validación timing-safe de la firma del webhook de Meta, comparación timing-safe de tokens de sesión. Verificado en producción (headers presentes, logs limpios). Pendiente un paso manual del usuario: configurar `WHATSAPP_APP_SECRET` en Railway para activar la validación de firma (hoy es fail-open).
 
 ### Tareas en Progreso (Backlog actual)
-* **Seguridad (prioridad alta, hallazgos de la auditoría 2026-09-10):**
-    * Validar firma `X-Hub-Signature-256` del webhook de WhatsApp — hoy `WHATSAPP_APP_SECRET` existe en config pero nunca se usa; cualquiera que conozca la URL puede simular mensajes.
-    * Rate limiting en `/canjear/validar` y `/payments/wompi` (hoy sin límite, `apiLimiter` solo cubre `/app/api` y `/admin`).
-    * Agregar `discountPercent` al modelo `Coupon` (falta, solo existe en `Campaign`) — hoy el % de descuento nunca se muestra en cupones creados desde el panel admin, es un bug silencioso.
-* **Producto (hallazgos de la auditoría):**
+* **Manual del usuario:** configurar `WHATSAPP_APP_SECRET` en Railway (Meta for Developers → app "igeogo" → Settings → Basic → App secret) para activar la validación de firma del webhook.
+* **Seguridad/producto (hallazgos de auditoría aún sin cerrar):**
+    * Agregar `discountPercent` al modelo `Coupon` (falta, solo existe en `Campaign`) — bug silencioso, el % de descuento no se muestra en cupones de comercio.
     * Respetar `redemptionLimit` en el matching de cupones (existe el campo, no se usa).
-    * Dashboard de resultados de campaña dentro de la app del comercio (hoy solo lo ve el admin).
-    * Límite de frecuencia de envío por usuario (evitar fatiga/spam y problemas de calidad con Meta).
+    * Rate limiting específico en `/canjear/validar` y `/payments/wompi` (el limiter nuevo no los cubre).
 * **Operativas:**
     * Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).
     * Confirmar estado de la plantilla "oferta_cercana" en WhatsApp Manager → Message Templates.

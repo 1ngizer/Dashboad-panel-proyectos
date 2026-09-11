@@ -49,7 +49,7 @@ const data = {
         ]
     },
     "02. igeogo": {
-        "Avance": 90,
+        "Avance": 92,
         "Bloqueos": "Soporte Wompi: restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea 3 de los 4 planes de precio. Sigue sin respuesta. Es el único bloqueo de negocio activo — Meta ya no bloquea.",
         "Próxima Tarea": "Confirmar el estado de la plantilla 'oferta_cercana' en WhatsApp Manager y dar seguimiento a soporte de Wompi.",
         "Estado del proyecto": "En curso",
@@ -61,11 +61,10 @@ const data = {
             "Integraciones: Mapbox, Nominatim, Claude IA, Wompi, Meta API"
         ],
         "Backlog": [
-            "[Alta/Seguridad] Validar firma X-Hub-Signature-256 del webhook de WhatsApp (hoy sin validar).",
-            "[Alta/Seguridad] Rate limiting en /canjear/validar y /payments/wompi.",
+            "[Manual usuario] Configurar WHATSAPP_APP_SECRET en Railway para activar la validacion de firma del webhook (ya desplegada, hoy fail-open).",
             "[Alta/Bug] Agregar discountPercent a Coupon — hoy el % de descuento no se muestra en cupones de comercio.",
             "[Media/Producto] Respetar redemptionLimit en el matching de cupones.",
-            "[Media/Producto] Dashboard de resultados de campaña dentro de la app del comercio.",
+            "[Media/Seguridad] Rate limiting especifico en /canjear/validar y /payments/wompi.",
             "Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).",
             "Confirmar estado de la plantilla 'oferta_cercana' en WhatsApp Manager.",
             "Evaluar dominio propio (igeogo.co)."
