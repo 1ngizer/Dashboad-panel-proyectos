@@ -6,10 +6,10 @@ const databaseId = process.env.NOTION_DATABASE_ID;
 const data = {
     "01. Ingizer": {
         "Avance": 99,
-        "Bloqueos": "Usuario de prueba subió PDF erróneo. Saldo Anthropic expirado.",
-        "Próxima Tarea": "Recargar saldo de API de IA y reemplazar el archivo PDF.",
+        "Bloqueos": "Ninguno en el motor de diagnóstico. Brecha de producto: los planes pagos y las 18 Power Apps del landing no tienen checkout ni herramientas conectadas (ver README).",
+        "Próxima Tarea": "Definir destino real de 'Elegir plan' y 'Explorar' en el landing; confirmar en Make que Gmail no de warnings; contactar manualmente al lead 'Rafel' estancado desde el 05/08.",
         "Estado del proyecto": "En curso",
-        "Prioridad": "Alta",
+        "Prioridad": "Media",
         "Mermaid": "graph LR\n  Cliente([Cliente]) --> Landing[ingizer.com]\n  Landing --> App[app.ingizer.com - Bubble DB]\n  App -->|Datos de usuario| Make[Make.com]\n  Make <-->|Preguntas y Diagnóstico| Claude[Claude Sonnet 5]\n  Make --> Equipo[Gmail equipo]\n  Make --> Correo[Correo al cliente]\n  App --> Calendly[Agendar sesión Calendly]",
         "MermaidPreguntas": "graph TD\n  Start([Inicio en Chat]) --> M1[Módulo 1: Generales - 11 preguntas]\n  M1 --> Q1{Pregunta 1: Etapa}\n  Q1 -->|Arrancando| RA[Rama A: Emprendimiento]\n  Q1 -->|Andando| RB[Rama B: Negocio Tradicional]\n  Q1 -->|Creciendo| RC[Rama C: Startup / Rápido]\n  RA --> A[Análisis: Sostenibilidad, Precio, Orden]\n  RB --> B[Análisis: Liquidez, Ciclo Caja, Deuda]\n  RC --> C[Análisis: Burn rate, Inversión, Control]\n  A --> Fin([Generar Diagnóstico y Canvas])\n  B --> Fin\n  C --> Fin",
         "TechStack": [
@@ -21,17 +21,19 @@ const data = {
         ],
         "Backlog": [
             "Verificar formato HTML del correo del cliente.",
-            "Probar en producción las Ramas A y C del cuestionario.",
-            "Crear enlace condicional hacia el producto PosBank.",
-            "Limpiar y eliminar 3 agentes huérfanos en Make.com."
+            "Limpiar y eliminar 3 agentes huérfanos en Make.com.",
+            "[Mejora] Evaluar Bubble Privacy Rules y Rate Limiting.",
+            "[Mejora] Rediseñar página /register con marca de ingizer.",
+            "[Alta] Definir destino real de 'Elegir plan' (checkout) y 'Explorar' (Power Apps).",
+            "[Media] Contactar leads reales estancados (Rafel y otros)."
         ]
     },
     "03. PosBank": {
         "Avance": 95,
-        "Bloqueos": "Restricción de Meta (sospecha automatización) y problemas de formato en el RUT.",
-        "Próxima Tarea": "Corregir dirección en Meta Business Info (Cra 80 Bis No. 7A - 15).",
+        "Bloqueos": "Verificación Meta: la integración de WhatsApp está bloqueada por una restricción activa (sospecha de automatización) y problemas de formato de dirección/teléfono en el RUT.",
+        "Próxima Tarea": "Corregir dirección en Meta Business Info (Cra 80 Bis No. 7A - 15) y reintentar la verificación.",
         "Estado del proyecto": "En curso",
-        "Prioridad": "Media",
+        "Prioridad": "Alta",
         "Mermaid": "graph TD\n  A[App PWA] --> API[posbank-api - Railway]\n  B[Alexa Voz] --> API\n  C[WhatsApp Chat] --> API\n  Cam[Cámara Facturas] --> API\n  API <--> DB[(Supabase PostgreSQL)]\n  API --> Claude[Claude API OCR]",
         "TechStack": [
             "Frontend (App): React + Vite (PWA)",
@@ -40,17 +42,18 @@ const data = {
         ],
         "Backlog": [
             "Corregir dirección en Meta Business Info para coincidir con RUT.",
-            "Reintentar verificación con RUT y admin@ingizer.com.",
+            "Reintentar verificación con RUT y admin@ingizer.com (Plan B: WABA bajo Ingizer SAS).",
             "Probar el nombre de invocación ('pos bank') en Echo físico.",
+            "Invitar testers reales mediante la app móvil de Alexa.",
             "Definir si se construye facturación POS por voz."
         ]
     },
     "02. igeogo": {
         "Avance": 90,
-        "Bloqueos": "Soporte Wompi (límite $150k) sin responder. Esperando número telefónico.",
-        "Próxima Tarea": "Conseguir SIM nueva dedicada para WhatsApp Manager.",
-        "Estado del proyecto": "Bloqueado",
-        "Prioridad": "Baja",
+        "Bloqueos": "Soporte Wompi: restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea 3 de los 4 planes de precio. Sigue sin respuesta. Es el único bloqueo de negocio activo — Meta ya no bloquea.",
+        "Próxima Tarea": "Confirmar el estado de la plantilla 'oferta_cercana' en WhatsApp Manager y dar seguimiento a soporte de Wompi.",
+        "Estado del proyecto": "En curso",
+        "Prioridad": "Alta",
         "Mermaid": "graph TD\n  U[Usuario - App/WhatsApp] --> API[Express Backend - Railway]\n  N[Negocio - Crea Promociones] --> API\n  API <--> DB[(MongoDB)]\n  API --> Mapas[Mapbox / Nominatim]\n  API --> IA[Claude IA]\n  API --> Pagos[Wompi]\n  API --> WP[WhatsApp API]",
         "TechStack": [
             "Backend 24/7: Node.js / Express en Railway",
@@ -58,10 +61,9 @@ const data = {
             "Integraciones: Mapbox, Nominatim, Claude IA, Wompi, Meta API"
         ],
         "Backlog": [
-            "Conseguir SIM/número dedicado para el bot de WhatsApp.",
-            "Limpiar 8 comercios de prueba y 6 campañas demo del panel.",
-            "Conectar el número real en WhatsApp Manager.",
-            "Agregar método de pago en WhatsApp y publicar app en Live."
+            "Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).",
+            "Confirmar estado de la plantilla 'oferta_cercana' en WhatsApp Manager.",
+            "Evaluar dominio propio (igeogo.co)."
         ]
     }
 };
