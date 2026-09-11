@@ -138,13 +138,10 @@ Plataforma verificada en línea y sin errores funcionales en su core (landings, 
 * **Auditoría técnica completa (2026-09-10):** revisión de salud y código real — sin errores en logs, todos los endpoints responden. Se confirmaron 2 hallazgos críticos con lectura directa del código: webhook de Meta sin validar firma, y `discountPercent` roto en cupones de comercio.
 * **Asistente de IA ampliado (2026-09-11):** antes solo redactaba texto de campañas. Se agregó moderación de contenido (bloquea campañas con contenido engañoso/ilegal antes de crearlas) y recomendaciones automáticas sobre resultados reales de campaña. La app del comercio ahora muestra sus resultados reales (enviados/interesados/% conversión) — antes solo existían en el panel admin.
 * **Hardening de seguridad desplegado (2026-09-11):** helmet + CORS explícito + rate limiting global en `/app/api` y `/admin`, validación timing-safe de la firma del webhook de Meta, comparación timing-safe de tokens de sesión. Verificado en producción (headers presentes, logs limpios). Pendiente un paso manual del usuario: configurar `WHATSAPP_APP_SECRET` en Railway para activar la validación de firma (hoy es fail-open).
+* **3 hallazgos más de la auditoría cerrados (2026-09-11):** `discountPercent` agregado a `Coupon` (bug silencioso corregido, con UI en el panel), `redemptionLimit` ahora se respeta en el matching (cupones agotados ya no se entregan), rate limiting específico en `/canjear/validar` (30/15min) y `/payments/wompi` (100/15min).
 
 ### Tareas en Progreso (Backlog actual)
 * **Manual del usuario:** configurar `WHATSAPP_APP_SECRET` en Railway (Meta for Developers → app "igeogo" → Settings → Basic → App secret) para activar la validación de firma del webhook.
-* **Seguridad/producto (hallazgos de auditoría aún sin cerrar):**
-    * Agregar `discountPercent` al modelo `Coupon` (falta, solo existe en `Campaign`) — bug silencioso, el % de descuento no se muestra en cupones de comercio.
-    * Respetar `redemptionLimit` en el matching de cupones (existe el campo, no se usa).
-    * Rate limiting específico en `/canjear/validar` y `/payments/wompi` (el limiter nuevo no los cubre).
 * **Operativas:**
     * Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).
     * Confirmar estado de la plantilla "oferta_cercana" en WhatsApp Manager → Message Templates.
