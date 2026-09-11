@@ -61,6 +61,11 @@ const data = {
             "Integraciones: Mapbox, Nominatim, Claude IA, Wompi, Meta API"
         ],
         "Backlog": [
+            "[Alta/Seguridad] Validar firma X-Hub-Signature-256 del webhook de WhatsApp (hoy sin validar).",
+            "[Alta/Seguridad] Rate limiting en /canjear/validar y /payments/wompi.",
+            "[Alta/Bug] Agregar discountPercent a Coupon — hoy el % de descuento no se muestra en cupones de comercio.",
+            "[Media/Producto] Respetar redemptionLimit en el matching de cupones.",
+            "[Media/Producto] Dashboard de resultados de campaña dentro de la app del comercio.",
             "Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).",
             "Confirmar estado de la plantilla 'oferta_cercana' en WhatsApp Manager.",
             "Evaluar dominio propio (igeogo.co)."

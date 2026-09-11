@@ -135,8 +135,17 @@ Plataforma verificada en línea y sin errores funcionales en su core (landings, 
 * **Google Analytics 4 + analítica de campañas (2026-09-09):** cuenta de GA ("ingizer" → propiedad "igeogo", Measurement ID `G-9Q6DNKDM7S`) agregada a las 5 páginas de landing. `Campaign.interestedCount` ahora registra cada respuesta "INTERESADO" y la tab Campañas muestra conversión por campaña + resumen agregado.
 * **Google Business Profile ya verificado (confirmado 2026-09-09):** estaba "Verified" desde antes. Se actualizó el teléfono al número real del bot y se conectó WhatsApp como canal de chat primario.
 * **Validación de canjes con código único (2026-09-09):** el código de la tarjeta de WhatsApp ahora se persiste (modelo `Redemption`). Los comercios validan el código en `igeogo.ingizer.com/canjear/` — un código solo se puede usar una vez. Panel admin: nueva pestaña "Canjes" con historial.
+* **Auditoría técnica completa (2026-09-10):** revisión de salud y código real — sin errores en logs, todos los endpoints responden. Se confirmaron 2 hallazgos críticos con lectura directa del código (ver Backlog): webhook de Meta sin validar firma, y `discountPercent` roto en cupones de comercio.
 
 ### Tareas en Progreso (Backlog actual)
+* **Seguridad (prioridad alta, hallazgos de la auditoría 2026-09-10):**
+    * Validar firma `X-Hub-Signature-256` del webhook de WhatsApp — hoy `WHATSAPP_APP_SECRET` existe en config pero nunca se usa; cualquiera que conozca la URL puede simular mensajes.
+    * Rate limiting en `/canjear/validar` y `/payments/wompi` (hoy sin límite, `apiLimiter` solo cubre `/app/api` y `/admin`).
+    * Agregar `discountPercent` al modelo `Coupon` (falta, solo existe en `Campaign`) — hoy el % de descuento nunca se muestra en cupones creados desde el panel admin, es un bug silencioso.
+* **Producto (hallazgos de la auditoría):**
+    * Respetar `redemptionLimit` en el matching de cupones (existe el campo, no se usa).
+    * Dashboard de resultados de campaña dentro de la app del comercio (hoy solo lo ve el admin).
+    * Límite de frecuencia de envío por usuario (evitar fatiga/spam y problemas de calidad con Meta).
 * **Operativas:**
     * Cargar comercios y cupones reales (panel ya limpio, sin datos de prueba).
     * Confirmar estado de la plantilla "oferta_cercana" en WhatsApp Manager → Message Templates.
