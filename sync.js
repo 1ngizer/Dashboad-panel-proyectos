@@ -5,6 +5,10 @@ const databaseId = process.env.NOTION_DATABASE_ID;
 
 const data = {
     "01. Ingizer": {
+        "Links": [
+            { label: "Landing Page", url: "https://ingizer.com" },
+            { label: "Panel de Control (Dashboard App)", url: "https://app.ingizer.com" }
+        ],
         "Avance": 99,
         "Bloqueos": "Ninguno en el motor de diagnóstico. Brecha de producto: los planes pagos y las 18 Power Apps del landing no tienen checkout ni herramientas conectadas (ver README).",
         "Próxima Tarea": "Definir destino real de 'Elegir plan' y 'Explorar' en el landing; confirmar en Make que Gmail no de warnings; contactar manualmente al lead 'Rafel' estancado desde el 05/08.",
@@ -29,6 +33,9 @@ const data = {
         ]
     },
     "03. PosBank": {
+        "Links": [
+            { label: "Landing Page Comercial", url: "https://posbank.ingizer.com" }
+        ],
         "Avance": 95,
         "Bloqueos": "Verificación Meta: la integración de WhatsApp está bloqueada por una restricción activa (sospecha de automatización) y problemas de formato de dirección/teléfono en el RUT.",
         "Próxima Tarea": "Corregir dirección en Meta Business Info (Cra 80 Bis No. 7A - 15) y reintentar la verificación.",
@@ -49,6 +56,9 @@ const data = {
         ]
     },
     "02. igeogo": {
+        "Links": [
+            { label: "Landing Page Comercial", url: "https://igeogo.ingizer.com" }
+        ],
         "Avance": 92,
         "Bloqueos": "Soporte Wompi: restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea 3 de los 4 planes de precio. Sigue sin respuesta. Es el único bloqueo de negocio activo — Meta ya no bloquea.",
         "Próxima Tarea": "Confirmar el estado de la plantilla 'oferta_cercana' en WhatsApp Manager y dar seguimiento a soporte de Wompi.",
@@ -128,13 +138,33 @@ async function syncDirectFetch() {
             }
 
             // 3. Insertar Arquitectura y Backlog
-            const children = [
-                {
+                        // 3. Insertar Enlaces Rápidos
+            const children = [];
+            if (data[title].Links && data[title].Links.length > 0) {
+                children.push({
                     object: "block",
                     type: "heading_2",
-                    heading_2: { rich_text: [{ text: { content: "🏗️ Arquitectura y Tech Stack" } }] }
-                }
-            ];
+                    heading_2: { rich_text: [{ text: { content: "🔗 Enlaces Rápidos" } }] }
+                });
+                data[title].Links.forEach(link => {
+                    children.push({
+                        object: "block",
+                        type: "bulleted_list_item",
+                        bulleted_list_item: { 
+                            rich_text: [
+                                { text: { content: link.label + ": " } },
+                                { text: { content: link.url }, href: link.url }
+                            ] 
+                        }
+                    });
+                });
+            }
+
+            children.push({
+                object: "block",
+                type: "heading_2",
+                heading_2: { rich_text: [{ text: { content: "🏗️ Arquitectura y Tech Stack" } }] }
+            });
 
             if (data[title].Mermaid) {
                 children.push({
