@@ -59,9 +59,9 @@ const data = {
         "Links": [
             { label: "Landing Page Comercial", url: "https://igeogo.ingizer.com" }
         ],
-        "Avance": 95,
-        "Bloqueos": "Soporte Wompi: restricción activa (límite mínimo de $150.000 COP por transacción) que bloquea 3 de los 4 planes de precio. Sigue sin respuesta. Es el único bloqueo de negocio activo — Meta ya no bloquea.",
-        "Próxima Tarea": "Confirmar el estado de la plantilla 'oferta_cercana' en WhatsApp Manager y dar seguimiento a soporte de Wompi.",
+        "Avance": 98,
+        "Bloqueos": "Soporte Wompi: restricción activa (mínimo $150.000 COP por transacción). Sigue sin respuesta. Es el único bloqueo de negocio activo.",
+        "Próxima Tarea": "Configurar WHATSAPP_APP_SECRET en Railway y cargar comercios/cupones reales.",
         "Estado del proyecto": "En curso",
         "Prioridad": "Alta",
         "Mermaid": "graph TD\n  U[Usuario - App/WhatsApp] --> API[Express Backend - Railway]\n  N[Negocio - Crea Promociones] --> API\n  API <--> DB[(MongoDB)]\n  API --> Mapas[Mapbox / Nominatim]\n  API --> IA[Claude IA]\n  API --> Pagos[Wompi]\n  API --> WP[WhatsApp API]",
