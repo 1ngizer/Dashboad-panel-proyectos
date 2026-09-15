@@ -1,4 +1,4 @@
-﻿# Panel de Control de Proyectos (AI Dashboard)
+# Panel de Control de Proyectos (AI Dashboard)
 
 Este repositorio sirve como la **fuente de la verdad** (Single Source of Truth) para el estado, desarrollo y estrategia comercial de todos los proyectos activos. Cualquier Inteligencia Artificial (Claude, Antigravity, ChatGPT, etc.) debe leer este documento para obtener el contexto actualizado antes de asistir en el desarrollo o marketing de los proyectos.
 
@@ -160,8 +160,45 @@ Plataforma verificada en lÃ­nea y sin errores funcionales en su core (landings
 
 ---
 
-## 5. cubecanvas
-*(Pendiente de actualizar)*
+## 5. cubecanvas (Cube Canvas / BCC)
+
+### Estado General
+Aplicación frontend 100% operativa y compilable en producción (`npm run build` verificado). Se recuperaron y sincronizaron los 13 módulos clave del repositorio de GitHub (`1ngizer/cube-canvas`), cubriendo el lienzo interactivo Business Cube Commands (BCC), motor financiero en tiempo real, modales de simulación de estrés, cascada de caja, pitch one-pager y Copilot IA multi-proveedor. Branding corporativo e imagotipo SVG isométrico 3D implementados.
+
+### Desarrollo y Tecnología (DevOps / Tech)
+* **Frontend:** React 19 + Vite (SPA interactiva).
+* **Motor Financiero:** `src/utils/finance.js` (cálculo en memoria de flujo de caja, EBITDA, runway, punto de equilibrio, cobertura de deuda y capital stack).
+* **Copilot IA:** `src/utils/aiService.js` (integración con Gemini API, OpenAI API y motor heurístico offline).
+* **Estilos:** CSS Vanilla estructurado con variables y tokens de diseño (`src/index.css`, BCC Dark Theme corporativo).
+* **Exportaciones:** Motor XLSX (`xlsx`) para libros con fórmulas y exportación PDF/impresión optimizada.
+* **Hosting / Despliegue:** Configuraciones listas para Vercel (`vercel.json`) y Netlify (`netlify.toml`).
+* **Repositorio GitHub:** `https://github.com/1ngizer/cube-canvas`.
+
+### Módulos Completados
+* **Scaffolding y Build:** Vite + React 19, dependencias instaladas y build limpio (`dist/`).
+* **Lienzo Principal BCC (`BccCanvas.jsx`):** Vista de pantalla única (100vh) que visualiza las 4 áreas clave (Estrategia, Caja, Costos, Capital Stack).
+* **Drawer / Modal de Módulos (`ModuleModal.jsx`):** Formulario para los módulos 1A a 4C (NSM, caja, productos P1..P9, requerimientos W/A/SS, bootstrapping y blitzscaling).
+* **Motor Financiero (`finance.js`):** Funciones de métricas BCC, KPIs de efectivo libre, servicio de deuda, apalancamiento y semáforos de liquidez.
+* **Simulaciones y Modales de Análisis:**
+  - `StressTestModal.jsx`: Sensibilidad ante caídas de ventas e incremento de costos.
+  - `WaterfallModal.jsx`: Desglose paso a paso del flujo de caja (Ventas → Costos → Deuda → Caja libre).
+  - `InvestorPitchModal.jsx`: Ficha ejecutiva One-Pager descargable/imprimible.
+  - `AiSettingsModal.jsx`: Configuración de proveedores y claves de API de IA.
+* **Exportación a Excel (`excelExport.js`):** Descarga de libro de trabajo `.xlsx` con hojas de métricas y supuestos.
+* **Gestor de Escenarios:** Presets Caso Pizzería (horno $150M), Caso Defensivo, plantillas en blanco, y persistencia local (`localStorage` y exportar/importar JSON).
+* **Branding e Imagotipo Oficial:** Favicon SVG 3D isométrico con paleta iNGIZER (`#00b050`, `#0070c0`), imagotipo en la barra de navegación superior y meta tags para SEO y PWA.
+
+### Tareas en Progreso (Backlog actual)
+* Configurar despliegue continuo en Vercel o Netlify bajo subdominio oficial (ej. `cubecanvas.ingizer.com`).
+* Obtener y calibrar fórmulas definitivas del modelo Excel del cliente (amortizaciones bancarias precisas e impuestos corporativos).
+* [Backlog futuro] Autenticación multi-usuario y persistencia en base de datos en la nube (Supabase/PostgreSQL) para guardar canvases entre dispositivos.
+
+### Bloqueos / Problemas actuales
+* Ninguno en el código. Pendiente calibración fina con modelo Excel del cliente.
+
+### Estrategia Comercial y Marketing
+* **Propuesta de Valor:** "Radar de Crecimiento y Estructura de Capital": permite a emprendedores, directores financieros y consultores modelar el impacto de expansión (compras de maquinaria, contratación, créditos) en el efectivo disponible antes de ejecutar.
+* **Sinergia con iNGIZER:** Herramienta complementaria para la oferta de CFO-as-a-service y diagnóstico avanzado para clientes que requieren levantar capital o financiar activos fijos.
 
 ---
 

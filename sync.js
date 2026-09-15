@@ -76,6 +76,30 @@ const data = {
             "Confirmar estado de la plantilla 'oferta_cercana' en WhatsApp Manager.",
             "Evaluar dominio propio (igeogo.co)."
         ]
+    },
+    "04. Cube Canvas": {
+        "Links": [
+            { label: "Repositorio GitHub", url: "https://github.com/1ngizer/cube-canvas" }
+        ],
+        "Avance": 85,
+        "Bloqueos": "Ninguno. Pendiente calibración fina con modelo Excel del cliente (amortizaciones e impuestos).",
+        "Próxima Tarea": "Configurar despliegue continuo en Vercel/Netlify bajo subdominio de ingizer.com y calibrar fórmulas definitivas del Excel.",
+        "Estado del proyecto": "En curso",
+        "Prioridad": "Media",
+        "Mermaid": "graph TD\n  U[Usuario / Consultor] --> UI[Cube Canvas - React Vite PWA]\n  UI --> M[Módulos 1A..4C: Estrategia, Caja, Costos, Blitzscaling]\n  UI --> F[Motor Financiero - finance.js]\n  F --> R[Lienzo BCC / Waterfall / Sensibilidad / Pitch]\n  F --> XL[Exportador Excel - xlsx]\n  UI --> AI[Copilot IA - Gemini / OpenAI / Local]",
+        "TechStack": [
+            "Frontend: React 19 + Vite (SPA / PWA)",
+            "Lógica Financiera: JavaScript puro (flujo de caja, capital stack y cobertura)",
+            "Estilos: CSS Vanilla estructurado (BCC Dark Theme corporativo)",
+            "IA: Copilot multi-proveedor (Gemini API, OpenAI API o modo heurístico offline)",
+            "Exportación: XLSX (Excel con fórmulas) y PDF nativo optimizado",
+            "Hosting: Vercel / Netlify (configuraciones vercel.json y netlify.toml listas)"
+        ],
+        "Backlog": [
+            "Configurar despliegue continuo en Vercel/Netlify bajo subdominio de ingizer.com.",
+            "Obtener y calibrar fórmulas definitivas del modelo Excel del cliente (amortizaciones bancarias e impuestos).",
+            "Autenticación multi-usuario y persistencia en nube (backlog futuro)."
+        ]
     }
 };
 
